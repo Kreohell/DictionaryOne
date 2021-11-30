@@ -1,4 +1,4 @@
-package ru.geekbrains.dictionaryone.presenter
+package ru.geekbrains.dictionaryone.viewmodel
 
 import io.reactivex.Observable
 
