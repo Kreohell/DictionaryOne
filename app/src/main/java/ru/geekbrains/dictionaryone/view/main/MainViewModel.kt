@@ -6,7 +6,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.geekbrains.dictionaryone.model.data.AppState
 import ru.geekbrains.dictionaryone.utils.parseOnlineSearchResults
-import ru.geekbrains.dictionaryone.utils.parseSearchResults
 import ru.geekbrains.dictionaryone.viewmodel.BaseViewModel
 
 class MainViewModel(private val interactor: MainInteractor) :

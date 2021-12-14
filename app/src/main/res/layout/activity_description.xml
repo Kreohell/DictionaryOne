@@ -48,3 +48,5 @@
             android:contentDescription="@string/image_stub"/>
     </LinearLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
