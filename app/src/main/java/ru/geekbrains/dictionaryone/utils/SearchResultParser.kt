@@ -124,3 +124,5 @@ private fun parseOnlineResult(dataModel: DataModel, newDataModels: ArrayList<Dat
         }
     }
 }
+
+fun String.Companion.getEmptyString(): String = ""

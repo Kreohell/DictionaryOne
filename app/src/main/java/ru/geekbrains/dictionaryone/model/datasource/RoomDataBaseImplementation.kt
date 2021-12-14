@@ -1,6 +1,5 @@
 package ru.geekbrains.dictionaryone.model.datasource
 
-import io.reactivex.Observable
 import ru.geekbrains.dictionaryone.model.data.AppState
 import ru.geekbrains.dictionaryone.model.data.DataModel
 import ru.geekbrains.dictionaryone.room.HistoryDao

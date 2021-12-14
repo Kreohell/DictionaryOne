@@ -25,8 +25,8 @@ val application = module {
 }
 
 val mainScreen = module {
-    factory { MainInteractor(get(), get()) }
     factory { MainViewModel(get()) }
+    factory { MainInteractor(get(), get()) }
 }
 
 val historyScreen = module {
