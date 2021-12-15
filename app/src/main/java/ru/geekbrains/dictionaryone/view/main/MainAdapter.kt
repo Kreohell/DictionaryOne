@@ -3,12 +3,13 @@ package ru.geekbrains.dictionaryone.view.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main_recyclerview_item.view.*
 import ru.geekbrains.dictionaryone.R
-import ru.geekbrains.dictionaryone.model.data.DataModel
 import ru.geekbrains.dictionaryone.utils.convertMeaningsToString
+import ru.geekbrains.model.data.DataModel
+
+
 
 class MainAdapter(private var onListItemClickListener: OnListItemClickListener) :
     RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {

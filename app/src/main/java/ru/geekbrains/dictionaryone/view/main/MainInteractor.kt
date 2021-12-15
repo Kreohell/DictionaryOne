@@ -1,10 +1,10 @@
 package ru.geekbrains.dictionaryone.view.main
 
-import ru.geekbrains.dictionaryone.model.data.AppState
-import ru.geekbrains.dictionaryone.model.data.DataModel
-import ru.geekbrains.dictionaryone.model.repository.Repository
-import ru.geekbrains.dictionaryone.model.repository.RepositoryLocal
 import ru.geekbrains.dictionaryone.viewmodel.Interactor
+import ru.geekbrains.model.data.AppState
+import ru.geekbrains.model.data.DataModel
+import ru.geekbrains.repository.Repository
+import ru.geekbrains.repository.RepositoryLocal
 
 
 class MainInteractor(

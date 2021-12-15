@@ -7,11 +7,12 @@ import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import coil.ImageLoader
-import coil.request.LoadRequest
+import coil.request.ImageRequest
 import ru.geekbrains.dictionaryone.R
 import ru.geekbrains.dictionaryone.databinding.ActivityDescriptionBinding
-import ru.geekbrains.dictionaryone.utils.network.isOnline
-import ru.geekbrains.dictionaryone.utils.ui.AlertDialogFragment
+import ru.geekbrains.utils.network.isOnline
+import ru.geekbrains.utils.ui.AlertDialogFragment
+
 
 class DescriptionActivity : AppCompatActivity() {
 
@@ -76,7 +77,7 @@ class DescriptionActivity : AppCompatActivity() {
     }
 
     private fun useCoilToLoadPhoto(imageView: ImageView, imageLink: String) {
-        val request = LoadRequest.Builder(this)
+        val request = ImageRequest.Builder(this)
             .data("https:$imageLink")
             .target(
                 onStart = {},
@@ -87,12 +88,9 @@ class DescriptionActivity : AppCompatActivity() {
                     imageView.setImageResource(R.drawable.ic_error)
                 }
             )
-            //.transformations(
-            //    CircleCropTransformation(),
-            //)
             .build()
 
-        ImageLoader(this).execute(request)
+        ImageLoader(this).enqueue(request)
     }
 
     companion object {
