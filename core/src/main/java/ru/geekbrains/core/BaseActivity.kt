@@ -3,13 +3,15 @@ package ru.geekbrains.dictionaryone.view.base
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import ru.geekbrains.core.R
 import ru.geekbrains.core.databinding.LoadingLayoutBinding
 import ru.geekbrains.dictionaryone.viewmodel.BaseViewModel
 import ru.geekbrains.dictionaryone.viewmodel.Interactor
 import ru.geekbrains.model.data.AppState
-import ru.geekbrains.model.data.DataModel
+import ru.geekbrains.model.data.userdata.DataModel
+import ru.geekbrains.utils.network.OnlineLiveData
 import ru.geekbrains.utils.network.isOnline
 import ru.geekbrains.utils.ui.AlertDialogFragment
 
@@ -19,11 +21,11 @@ abstract class BaseActivity<T : AppState, I : Interactor<T>> : AppCompatActivity
 
     private lateinit var binding: LoadingLayoutBinding
     abstract val model: BaseViewModel<T>
-    protected var isNetworkAvailable: Boolean = false
+    protected var isNetworkAvailable: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        isNetworkAvailable = isOnline(applicationContext)
+        subscribeToNetworkChange()
     }
 
     override fun onResume() {
@@ -34,6 +36,21 @@ abstract class BaseActivity<T : AppState, I : Interactor<T>> : AppCompatActivity
         if (!isNetworkAvailable && isDialogNull()) {
             showNoInternetConnectionDialog()
         }
+    }
+
+    private fun subscribeToNetworkChange() {
+        OnlineLiveData(this).observe(
+            this@BaseActivity,
+            {
+                isNetworkAvailable = it
+                if (!isNetworkAvailable) {
+                    Toast.makeText(
+                        this@BaseActivity,
+                        R.string.dialog_message_device_is_offline,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
     }
 
     protected fun renderData(appState: T) {

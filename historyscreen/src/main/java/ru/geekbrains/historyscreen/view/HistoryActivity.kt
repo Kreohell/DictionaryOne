@@ -2,11 +2,11 @@ package ru.geekbrains.historyscreen.view
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.scope.currentScope
 import ru.geekbrains.dictionaryone.view.base.BaseActivity
 import ru.geekbrains.historyscreen.databinding.ActivityHistoryBinding
 import ru.geekbrains.model.data.AppState
-import ru.geekbrains.model.data.DataModel
+import ru.geekbrains.model.data.userdata.DataModel
 
 
 class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
@@ -37,7 +37,7 @@ class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
         if (binding.historyActivityRecyclerview.adapter != null) {
             throw IllegalStateException("The ViewModel should be initialised first")
         }
-        val viewModel: HistoryViewModel by viewModel()
+        val viewModel: HistoryViewModel by currentScope.inject()
         model = viewModel
         model.subscribe().observe(this@HistoryActivity, Observer<AppState> { renderData(it) })
     }

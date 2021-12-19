@@ -5,6 +5,7 @@ import kotlinx.coroutines.launch
 
 import ru.geekbrains.dictionaryone.viewmodel.BaseViewModel
 import ru.geekbrains.historyscreen.parseLocalSearchResults
+
 import ru.geekbrains.model.data.AppState
 
 class HistoryViewModel(private val interactor: HistoryInteractor) :

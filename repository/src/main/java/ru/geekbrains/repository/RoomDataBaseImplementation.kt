@@ -2,13 +2,14 @@ package ru.geekbrains.repository
 
 
 import ru.geekbrains.model.data.AppState
-import ru.geekbrains.model.data.DataModel
+import ru.geekbrains.model.data.dto.SearchResultDto
+import ru.geekbrains.model.data.userdata.DataModel
 import ru.geekbrains.repository.room.HistoryDao
 
 class RoomDataBaseImplementation(private val historyDao: HistoryDao) :
-    DataSourceLocal<List<DataModel>> {
+    DataSourceLocal<List<SearchResultDto>> {
 
-    override suspend fun getData(word: String): List<DataModel> {
+    override suspend fun getData(word: String): List<SearchResultDto> {
         return mapHistoryEntityToSearchResult(historyDao.all())
     }
 
