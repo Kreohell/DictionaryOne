@@ -2,6 +2,8 @@ package ru.geekbrains.dictionaryone.view.description
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.RenderEffect
+import android.graphics.Shader
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageView
@@ -88,6 +90,8 @@ class DescriptionActivity : AppCompatActivity() {
                 onStart = {},
                 onSuccess = { result ->
                     imageView.setImageDrawable(result)
+                    val blurEffect = RenderEffect.createBlurEffect(15f, 0f, Shader.TileMode.MIRROR)
+                    imageView.setRenderEffect(blurEffect)
                 },
                 onError = {
                     imageView.setImageResource(R.drawable.ic_error)
